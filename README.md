@@ -2,8 +2,14 @@
 
 ## Usage
 1. confirm Dockerfile, docker-compose.yml
-1. `docker-compose run --no-deps web rails new . --force --database=postgresql --skip-bundle`
-1. `docker-compose build`
+1. create new app
+```bash=
+docker-compose run --no-deps web rails new . --force --database=postgresql --skip-bundle
+```
+1. build image (bundle install)
+```bash=
+docker-compose build
+```
 1. edit `config/database.yml`
 ```yaml=
 default: &default
@@ -22,5 +28,11 @@ test:
   <<: *default
   database: myapp_test
 ```
-1. `docker-compose run web rails db:create`
-1. `docker-compose up`
+1. create database
+```bash=
+docker-compose run web rails db:create
+```
+1. Yay! We are on Rails!
+```
+docker-compose up
+```
